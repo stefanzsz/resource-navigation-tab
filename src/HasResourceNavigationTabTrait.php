@@ -12,6 +12,7 @@ use Laravel\Nova\Http\Requests\MetricRequest;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 use Throwable;
+use Laravel\Nova\Resource;
 
 trait HasResourceNavigationTabTrait
 {
@@ -24,7 +25,7 @@ trait HasResourceNavigationTabTrait
      * @throws Throwable
      * @return FieldCollection
      */
-    public function detailFieldsWithinPanels(NovaRequest $request)
+    public function detailFieldsWithinPanels(NovaRequest $request, Resource $resource)
     {
         $activeNavigationField = $this->getActiveNavigationField($request);
 
@@ -33,7 +34,7 @@ trait HasResourceNavigationTabTrait
         );
     }
 
-    public function availablePanelsForDetail($request)
+    public function availablePanelsForDetail($request, Resource $resource)
     {
 
         $label = Panel::defaultNameForDetail($request->newResource());
